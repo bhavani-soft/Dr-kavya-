@@ -12,34 +12,28 @@ export default function About() {
   return (
     <section
       id="about"
-      // Full-width, generous padding — no max-w cap so text spans the screen
-      className="py-32 px-6 sm:px-10 md:px-16 lg:px-24 bg-white text-black"
+      className="py-20 md:py-32 px-5 sm:px-8 md:px-16 lg:px-24 bg-white text-black"
     >
       {/* Section label */}
       <motion.p
         initial={{ opacity: 0, y: 12 }}
         animate={isInView ? { opacity: 1, y: 0 } : {}}
         transition={{ duration: 0.55, ease: 'easeOut' }}
-        className="text-xs uppercase tracking-[0.22em] text-black/40 mb-10 font-sans"
+        className="text-xs uppercase tracking-[0.22em] text-black/40 mb-8 md:mb-10 font-sans"
       >
         About
       </motion.p>
 
-      {/* 
-        Single <p> element so the browser's justify algorithm can distribute
-        inter-word spaces correctly on every line.
-        hyphens: auto  → hyphenates long words at line breaks for tighter justify
-        text-align-last: left  → the final (ragged) line stays left-aligned
-      */}
       <motion.p
         ref={ref}
         initial={{ opacity: 0, y: 32 }}
         animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 32 }}
         transition={{ duration: 1.1, ease: [0.22, 1, 0.36, 1] }}
-        className="font-playfair text-lg sm:text-xl md:text-[1.35rem] lg:text-[1.5rem] leading-[1.82] text-black"
+        className="font-playfair text-base sm:text-lg md:text-[1.35rem] lg:text-[1.5rem] leading-[1.82] text-black"
         style={{
-          textAlign: 'justify',
-          textAlignLast: 'left',
+          // Left-align on mobile (justify looks broken on narrow screens),
+          // justify on wider screens where inter-word spacing is even.
+          textAlign: 'left',
           hyphens: 'auto',
           wordSpacing: '0.04em',
         }}

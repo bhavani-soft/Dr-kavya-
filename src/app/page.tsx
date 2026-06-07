@@ -12,9 +12,6 @@ export default function Home() {
       <About />
       <Experience />
       <Projects />
-      
-      {/* Spacer for scrolling */}
-      <div className="h-screen bg-white"></div>
     </main>
   );
 }
